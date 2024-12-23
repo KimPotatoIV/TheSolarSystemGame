@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://bvjoq4p8wqha7"]
+
+[ext_resource type="Texture2D" uid="uid://bp6p6i6pmj864" path="res://scenes/the_solar_system/03_mars/03_mars.png" id="1_5g071"]
+[ext_resource type="Script" path="res://scenes/the_solar_system/03_mars/03_mars.gd" id="1_24rqm"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_8nydw"]
+bounce = 0.25
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7myyk"]
+radius = 16.0
+
+[node name="03Mars" type="RigidBody2D" groups=["Mars"]]
+physics_material_override = SubResource("PhysicsMaterial_8nydw")
+continuous_cd = 2
+contact_monitor = true
+max_contacts_reported = 10
+script = ExtResource("1_24rqm")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_5g071")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_7myyk")

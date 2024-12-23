@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://bgpf0o6saq6qg"]
+
+[ext_resource type="Script" path="res://scenes/the_solar_system/09_jupiter/09_jupiter.gd" id="1_qwwsk"]
+[ext_resource type="Texture2D" uid="uid://p0gdytt8fiht" path="res://scenes/the_solar_system/09_jupiter/09_jupiter.png" id="1_uidot"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_c1fdp"]
+bounce = 0.25
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3812j"]
+radius = 48.0416
+
+[node name="09Jupiter" type="RigidBody2D" groups=["Jupiter"]]
+physics_material_override = SubResource("PhysicsMaterial_c1fdp")
+continuous_cd = 2
+contact_monitor = true
+max_contacts_reported = 10
+script = ExtResource("1_qwwsk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_uidot")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_3812j")

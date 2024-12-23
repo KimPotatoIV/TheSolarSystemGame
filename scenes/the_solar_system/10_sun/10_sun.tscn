@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://bad38vrkhsttv"]
+
+[ext_resource type="Script" path="res://scenes/the_solar_system/10_sun/10_sun.gd" id="1_0rs3i"]
+[ext_resource type="Texture2D" uid="uid://nfj5usq6jofm" path="res://scenes/the_solar_system/10_sun/10_sun.png" id="1_ejum3"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_1l4kk"]
+bounce = 0.25
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tfrus"]
+radius = 64.0078
+
+[node name="10Sun" type="RigidBody2D" groups=["Sun"]]
+physics_material_override = SubResource("PhysicsMaterial_1l4kk")
+continuous_cd = 2
+contact_monitor = true
+max_contacts_reported = 10
+script = ExtResource("1_0rs3i")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ejum3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_tfrus")

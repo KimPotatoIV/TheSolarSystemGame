@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://bwifnjqc4f5rj"]
+
+[ext_resource type="Script" path="res://scenes/the_solar_system/02_mercury/02_mercury.gd" id="1_bhwhb"]
+[ext_resource type="Texture2D" uid="uid://fji7mdiad13f" path="res://scenes/the_solar_system/02_mercury/02_mercury.png" id="2_4j0w7"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ujdq4"]
+bounce = 0.25
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jcaim"]
+radius = 12.0
+
+[node name="02Mercury" type="RigidBody2D" groups=["Mercury"]]
+physics_material_override = SubResource("PhysicsMaterial_ujdq4")
+continuous_cd = 1
+contact_monitor = true
+max_contacts_reported = 10
+script = ExtResource("1_bhwhb")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_4j0w7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_jcaim")

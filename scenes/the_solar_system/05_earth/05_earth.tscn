@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://d4h3k8oqbkxky"]
+
+[ext_resource type="Script" path="res://scenes/the_solar_system/05_earth/05_earth.gd" id="1_51kau"]
+[ext_resource type="Texture2D" uid="uid://cu38rxool1526" path="res://scenes/the_solar_system/05_earth/05_earth.png" id="1_k68iw"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_jddxd"]
+bounce = 0.25
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_odm2d"]
+radius = 24.0
+
+[node name="05Earth" type="RigidBody2D" groups=["Earth"]]
+physics_material_override = SubResource("PhysicsMaterial_jddxd")
+continuous_cd = 1
+contact_monitor = true
+max_contacts_reported = 10
+script = ExtResource("1_51kau")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_k68iw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_odm2d")

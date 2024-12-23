@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://dt7qmiq8ebwfr"]
+
+[ext_resource type="Texture2D" uid="uid://bs64jbuiy4ajc" path="res://scenes/the_solar_system/07_uranus/07_uranus.png" id="1_blp55"]
+[ext_resource type="Script" path="res://scenes/the_solar_system/07_uranus/07_uranus.gd" id="1_prp2q"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_i8716"]
+bounce = 0.25
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gh1wo"]
+radius = 32.0
+
+[node name="07Uranus" type="RigidBody2D" groups=["Uranus"]]
+physics_material_override = SubResource("PhysicsMaterial_i8716")
+continuous_cd = 2
+contact_monitor = true
+max_contacts_reported = 10
+script = ExtResource("1_prp2q")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_blp55")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_gh1wo")

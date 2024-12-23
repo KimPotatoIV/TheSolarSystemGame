@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://ds7pomoljbttl"]
+
+[ext_resource type="Texture2D" uid="uid://ca58ew6m8mis4" path="res://scenes/the_solar_system/06_neptune/06_neptune.png" id="1_gajlm"]
+[ext_resource type="Script" path="res://scenes/the_solar_system/06_neptune/06_neptune.gd" id="1_x83h5"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_edl3h"]
+bounce = 0.25
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_aq4u4"]
+radius = 28.0
+
+[node name="06Neptune" type="RigidBody2D" groups=["Neptune"]]
+physics_material_override = SubResource("PhysicsMaterial_edl3h")
+continuous_cd = 2
+contact_monitor = true
+max_contacts_reported = 10
+script = ExtResource("1_x83h5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_gajlm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_aq4u4")

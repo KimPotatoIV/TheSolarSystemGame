@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://ix4mcy5nyffj"]
+
+[ext_resource type="Texture2D" uid="uid://b8656464wh2or" path="res://scenes/the_solar_system/01_moon/01_moon.png" id="1_8x4o1"]
+[ext_resource type="Script" path="res://scenes/the_solar_system/01_moon/01_moon.gd" id="1_miuyr"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_us3e7"]
+bounce = 0.25
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0rqrt"]
+radius = 8.0
+
+[node name="01Moon" type="RigidBody2D" groups=["Moon"]]
+physics_material_override = SubResource("PhysicsMaterial_us3e7")
+continuous_cd = 1
+contact_monitor = true
+max_contacts_reported = 10
+script = ExtResource("1_miuyr")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_8x4o1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_0rqrt")
