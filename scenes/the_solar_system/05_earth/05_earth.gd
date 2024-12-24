@@ -21,6 +21,10 @@ func grow_planet(body: Node) -> void:
 	new_neptune.global_position = \
 		get_center_vector(global_position, body.global_position)
 	get_parent().add_child(new_neptune)
+	new_neptune.add_to_group("FallenPlanet")
+	
+	GameManager.set_score(GameManager.get_score() + 21)
+	GameManager.play_planet_grow_sound()
 	
 	body.queue_free()
 	queue_free()

@@ -36,7 +36,7 @@ func _ready() -> void:
 	add_child(controlled_planet)
 	controlled_planet.position = init_position
 	
-	next_planet = randi_range(0, PlanetType.VENUS)
+	next_planet = PlanetType.MOON
 	next_planet_sprite.texture = moon_texture
 	
 	spawn_timer.wait_time = 0.5
@@ -47,15 +47,18 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if not is_instance_valid(controlled_planet):
 		return
+		
+	if GameManager.get_game_over():
+		return
 	
 	if in_control:
 		controlled_planet.gravity_scale = 0
 		
 	var velocity = Vector2.ZERO
-	if Input.is_action_pressed("ui_left"):
+	if Input.is_action_pressed("ui_left") and in_control:
 		velocity.x -= movement_speed
 		controlled_planet.linear_velocity = velocity
-	elif Input.is_action_pressed("ui_right"):
+	elif Input.is_action_pressed("ui_right") and in_control:
 		velocity.x += movement_speed
 		controlled_planet.linear_velocity = velocity
 	elif in_control:
@@ -73,7 +76,9 @@ func _on_timer_timeout() -> void:
 
 ##################################################
 func match_planet_type() -> void:
-	
+	if is_instance_valid(controlled_planet):
+		controlled_planet.add_to_group("FallenPlanet")
+		
 	var planet_type = next_planet
 	match planet_type:
 		PlanetType.MOON:

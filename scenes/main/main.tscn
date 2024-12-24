@@ -1,8 +1,23 @@
-[gd_scene load_steps=4 format=3 uid="uid://dnyb2cahyeqjd"]
+[gd_scene load_steps=10 format=3 uid="uid://dnyb2cahyeqjd"]
 
 [ext_resource type="PackedScene" uid="uid://d035hdujwvqkq" path="res://scenes/background/background.tscn" id="1_s24vy"]
 [ext_resource type="Script" path="res://scenes/main/spawn_controller.gd" id="2_rinkm"]
 [ext_resource type="Texture2D" uid="uid://tjr63cxktqfr" path="res://scenes/the_solar_system/04_venus/04_venus.png" id="3_pu0p1"]
+[ext_resource type="Script" path="res://scenes/main/game_over_area.gd" id="4_7ue5a"]
+[ext_resource type="Script" path="res://scenes/main/hud.gd" id="5_5ocy7"]
+[ext_resource type="FontFile" uid="uid://du66yj078psmi" path="res://fonts/neodgm.ttf" id="5_km01x"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_33pmk"]
+size = Vector2(268, 20)
+
+[sub_resource type="LabelSettings" id="LabelSettings_qt776"]
+font = ExtResource("5_km01x")
+font_size = 48
+font_color = Color(0.921569, 0.92549, 0.862745, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_uqr6a"]
+font = ExtResource("5_km01x")
+font_size = 32
 
 [node name="Main" type="Node2D"]
 position = Vector2(0, 1)
@@ -17,3 +32,41 @@ script = ExtResource("2_rinkm")
 [node name="NextPlanetSprite" type="Sprite2D" parent="SpawnController"]
 position = Vector2(547, 93)
 texture = ExtResource("3_pu0p1")
+
+[node name="GameOverArea" type="Area2D" parent="."]
+script = ExtResource("4_7ue5a")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GameOverArea"]
+position = Vector2(320, 81)
+shape = SubResource("RectangleShape2D_33pmk")
+
+[node name="HUD" type="CanvasLayer" parent="."]
+script = ExtResource("5_5ocy7")
+
+[node name="GameOverLabel" type="Label" parent="HUD"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -36.0
+offset_top = -11.5
+offset_right = 36.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Game Over"
+label_settings = SubResource("LabelSettings_qt776")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScoreLabel" type="Label" parent="HUD"]
+offset_left = 507.0
+offset_top = 261.0
+offset_right = 587.0
+offset_bottom = 328.0
+text = "SCORE
+00000"
+label_settings = SubResource("LabelSettings_uqr6a")
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -13,5 +13,8 @@ func _on_body_entered(body: Node) -> void:
 
 ##################################################
 func grow_planet(body: Node) -> void:	
+	GameManager.set_score(GameManager.get_score() + 66)
+	GameManager.play_planet_grow_sound()
+	
 	body.queue_free()
 	queue_free()
