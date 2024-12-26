@@ -1,7 +1,7 @@
 extends RigidBody2D
 
 ##################################################
-const SATURN = \
+const SATURN: PackedScene = \
 	preload("res://scenes/the_solar_system/08_saturn/08_saturn.tscn")
 
 ##################################################
@@ -17,9 +17,9 @@ func _on_body_entered(body: Node) -> void:
 
 ##################################################
 func grow_planet(body: Node) -> void:
-	var new_saturn = SATURN.instantiate()
+	var new_saturn: Node2D = SATURN.instantiate()
 	new_saturn.global_position = \
-		get_center_vector(global_position, body.global_position)
+		GameManager.get_center_vector(global_position, body.global_position)
 	get_parent().add_child(new_saturn)
 	new_saturn.add_to_group("FallenPlanet")
 	
@@ -28,8 +28,3 @@ func grow_planet(body: Node) -> void:
 	
 	body.queue_free()
 	queue_free()
-
-##################################################
-func get_center_vector(vector1: Vector2, vector2: Vector2) -> Vector2:
-	var center_vector = (vector1 + vector2) / 2
-	return center_vector

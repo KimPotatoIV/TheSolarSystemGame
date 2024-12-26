@@ -12,7 +12,7 @@ size = Vector2(268, 20)
 
 [sub_resource type="LabelSettings" id="LabelSettings_qt776"]
 font = ExtResource("5_km01x")
-font_size = 48
+font_size = 40
 font_color = Color(0.921569, 0.92549, 0.862745, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_uqr6a"]
@@ -55,7 +55,9 @@ offset_right = 36.0
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
-text = "Game Over"
+text = "Game Over
+Press SPACE
+to restart"
 label_settings = SubResource("LabelSettings_qt776")
 horizontal_alignment = 1
 vertical_alignment = 1

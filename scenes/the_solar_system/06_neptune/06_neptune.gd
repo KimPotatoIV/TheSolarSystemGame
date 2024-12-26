@@ -1,7 +1,7 @@
 extends RigidBody2D
 
 ##################################################
-const URANUS = \
+const URANUS: PackedScene = \
 	preload("res://scenes/the_solar_system/07_uranus/07_uranus.tscn")
 
 ##################################################
@@ -17,9 +17,9 @@ func _on_body_entered(body: Node) -> void:
 
 ##################################################
 func grow_planet(body: Node) -> void:
-	var new_uranus = URANUS.instantiate()
+	var new_uranus: Node2D = URANUS.instantiate()
 	new_uranus.global_position = \
-		get_center_vector(global_position, body.global_position)
+		GameManager.get_center_vector(global_position, body.global_position)
 	get_parent().add_child(new_uranus)
 	new_uranus.add_to_group("FallenPlanet")
 	
@@ -28,8 +28,3 @@ func grow_planet(body: Node) -> void:
 	
 	body.queue_free()
 	queue_free()
-
-##################################################
-func get_center_vector(vector1: Vector2, vector2: Vector2) -> Vector2:
-	var center_vector = (vector1 + vector2) / 2
-	return center_vector

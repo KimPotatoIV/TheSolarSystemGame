@@ -1,7 +1,7 @@
 extends RigidBody2D
 
 ##################################################
-const VENUS = \
+const VENUS: PackedScene = \
 	preload("res://scenes/the_solar_system/04_venus/04_venus.tscn")
 
 ##################################################
@@ -17,9 +17,9 @@ func _on_body_entered(body: Node) -> void:
 
 ##################################################
 func grow_planet(body: Node) -> void:
-	var new_venus = VENUS.instantiate()
+	var new_venus: Node2D = VENUS.instantiate()
 	new_venus.global_position = \
-		get_center_vector(global_position, body.global_position)
+		GameManager.get_center_vector(global_position, body.global_position)
 	get_parent().add_child(new_venus)
 	new_venus.add_to_group("FallenPlanet")
 	
@@ -28,8 +28,3 @@ func grow_planet(body: Node) -> void:
 	
 	body.queue_free()
 	queue_free()
-
-##################################################
-func get_center_vector(vector1: Vector2, vector2: Vector2) -> Vector2:
-	var center_vector = (vector1 + vector2) / 2
-	return center_vector
