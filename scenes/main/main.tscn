@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dnyb2cahyeqjd"]
+[gd_scene load_steps=20 format=3 uid="uid://dnyb2cahyeqjd"]
 
 [ext_resource type="PackedScene" uid="uid://d035hdujwvqkq" path="res://scenes/background/background.tscn" id="1_s24vy"]
 [ext_resource type="Script" path="res://scenes/main/spawn_controller.gd" id="2_rinkm"]
@@ -6,6 +6,13 @@
 [ext_resource type="Script" path="res://scenes/main/game_over_area.gd" id="4_7ue5a"]
 [ext_resource type="Script" path="res://scenes/main/hud.gd" id="5_5ocy7"]
 [ext_resource type="FontFile" uid="uid://du66yj078psmi" path="res://fonts/neodgm.ttf" id="5_km01x"]
+[ext_resource type="Texture2D" uid="uid://dxe4lo0ufkpma" path="res://scenes/main/left_button_normal.png" id="7_hy0cj"]
+[ext_resource type="Texture2D" uid="uid://ccygjhxu2tqsa" path="res://scenes/main/left_button_pressed.png" id="8_4bto3"]
+[ext_resource type="Texture2D" uid="uid://8ukq7nfa8dd5" path="res://scenes/main/right_button_normal.png" id="9_ep48j"]
+[ext_resource type="Texture2D" uid="uid://bweyfixpyx6v3" path="res://scenes/main/right_button_pressed.png" id="10_eqxjn"]
+[ext_resource type="Texture2D" uid="uid://crybja0kxvkdj" path="res://scenes/main/down_button_normal.png" id="11_5aaoa"]
+[ext_resource type="Texture2D" uid="uid://bjwp5o4gw1eoe" path="res://scenes/main/down_button_pressed.png" id="12_ad21w"]
+[ext_resource type="AudioStream" uid="uid://dvtdrk1x5cj2f" path="res://sounds/The solar system Game.wav" id="13_gj0pj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_33pmk"]
 size = Vector2(268, 20)
@@ -18,6 +25,15 @@ font_color = Color(0.921569, 0.92549, 0.862745, 1)
 [sub_resource type="LabelSettings" id="LabelSettings_uqr6a"]
 font = ExtResource("5_km01x")
 font_size = 32
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ygcdw"]
+size = Vector2(80, 80)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qxr1t"]
+size = Vector2(80, 80)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4bvcv"]
+size = Vector2(160, 80)
 
 [node name="Main" type="Node2D"]
 position = Vector2(0, 1)
@@ -64,11 +80,37 @@ vertical_alignment = 1
 
 [node name="ScoreLabel" type="Label" parent="HUD"]
 offset_left = 507.0
-offset_top = 261.0
+offset_top = 201.0
 offset_right = 587.0
-offset_bottom = 328.0
+offset_bottom = 268.0
 text = "SCORE
 00000"
 label_settings = SubResource("LabelSettings_uqr6a")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="LeftTouchButton" type="TouchScreenButton" parent="HUD"]
+position = Vector2(40, 281)
+texture_normal = ExtResource("7_hy0cj")
+texture_pressed = ExtResource("8_4bto3")
+shape = SubResource("RectangleShape2D_ygcdw")
+action = "ui_left"
+
+[node name="RightTouchButton" type="TouchScreenButton" parent="HUD"]
+position = Vector2(120, 281)
+texture_normal = ExtResource("9_ep48j")
+texture_pressed = ExtResource("10_eqxjn")
+shape = SubResource("RectangleShape2D_qxr1t")
+action = "ui_right"
+
+[node name="DownTouchButton" type="TouchScreenButton" parent="HUD"]
+position = Vector2(527, 281)
+texture_normal = ExtResource("11_5aaoa")
+texture_pressed = ExtResource("12_ad21w")
+shape = SubResource("RectangleShape2D_4bvcv")
+action = "ui_accept"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("13_gj0pj")
+volume_db = -20.0
+autoplay = true
