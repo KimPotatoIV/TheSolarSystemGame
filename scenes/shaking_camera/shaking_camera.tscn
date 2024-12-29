@@ -1,7 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://cmya80t6ufbtd"]
-
-[ext_resource type="Script" path="res://scenes/shaking_camera/shaking_camera.gd" id="1_60umq"]
-
-[node name="ShakingCamera" type="Camera2D"]
-anchor_mode = 0
-script = ExtResource("1_60umq")
